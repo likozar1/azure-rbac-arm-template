@@ -75,6 +75,10 @@
       "resourceID": {
           "type": "string",
           "value": "test"
+      },
+      "hostname": {
+        "type": "string",
+        "value": "[reference(resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleName'))).dnsSettings.fqdn]"
       }
     }
   }
