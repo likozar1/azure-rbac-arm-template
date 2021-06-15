@@ -60,7 +60,7 @@
         {
             "type": "Microsoft.Authorization/roleDefinitions",
             "apiVersion": "2018-07-01",
-            "name": "[variables('roleDefName')]",
+            "name": "template1",
             "properties": {
                 "roleName": "[parameters('roleName')]",
                 "description": "[parameters('roleDescription')]",
@@ -92,7 +92,7 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[reference(variables('roleDefName')).outputs.resourceID.value]",
+                "roleDefinitionId": "[reference('template1').outputs.resourceID.value]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
