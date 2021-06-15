@@ -105,7 +105,7 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[reference([variables('roleDefName')]).outputs.resourceID.value]",
+                "roleDefinitionId": "[reference(variables('roleDefName')).outputs.resourceID.value]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
