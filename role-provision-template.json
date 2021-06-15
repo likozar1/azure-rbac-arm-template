@@ -5,7 +5,7 @@
       "scopes": {
         "type": "array",
         "defaultValue": [
-          "[subscription().id]"
+          "subscription().id"
         ],
         "metadata": {
           "description": "Role assignable scope with default value of id for current active subscription"
