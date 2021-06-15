@@ -92,7 +92,7 @@
             "outputs": {
                 "resourceID": {
                     "type": "string",
-                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleName'))]"
+                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', 'Cloud Connector RBAC Role')]"
                 }
             }
         },
