@@ -35,6 +35,7 @@
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]",
+                "principalType": "ServicePrincipal",
                 "scope": "[parameters('scopes')]"
             }
         }
