@@ -60,7 +60,7 @@
         {
             "type": "Microsoft.Authorization/roleDefinitions",
             "apiVersion": "2018-07-01",
-            "name": "template1",
+            "name": "[variables('roleDefName')]",
             "properties": {
                 "roleName": "[parameters('roleName')]",
                 "description": "[parameters('roleDescription')]",
