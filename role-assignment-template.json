@@ -2,6 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "scope": {
+            "type": "string",
+            "defaultValue": "[subscription().id]",
+            "metadata": {
+                "description": "Role assignable scope with default value of id for current active subscription"
+            }
+        },
         "roleDefinitionID": {
             "type": "string",
             "metadata": {
@@ -16,7 +23,7 @@
         }
     },
     "variables": {
-        "roleAssignmentName": "[guid(parameters('principalId'), parameters('roleDefinitionID'))]"
+        "roleAssignmentName": "[guid(parameters('principalId'), parameters('scope'), parameters('roleDefinitionID'))]"
     },
     "resources": [
         {
@@ -26,7 +33,8 @@
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]",
-                "principalType": "ServicePrincipal"
+                "principalType": "ServicePrincipal",
+                "scope": "[parameters('scope')]"
             }
         }
     ]
