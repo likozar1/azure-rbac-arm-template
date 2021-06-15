@@ -20,7 +20,7 @@
       },
       "roleName": {
         "type": "string",
-        "defaultValue": "Custom Role - RG Reader",
+        "defaultValue": "Cloud Connector RBAC - ARMT",
         "metadata": {
           "description": "Friendly name of the role definition"
         }
