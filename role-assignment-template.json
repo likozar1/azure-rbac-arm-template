@@ -29,12 +29,12 @@
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "scope": "[parameters('scope')]",
             "name": "[variables('roleAssignmentName')]",
             "properties": {
                 "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]",
-                "principalType": "ServicePrincipal"
+                "principalType": "ServicePrincipal",
+                "scope": "[resourceGroup().id]"
             }
         }
     ]
