@@ -5,7 +5,13 @@
       "actions": {
         "type": "array",
         "defaultValue": [
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
+          "Microsoft.Devices/iotHubs/Read",
+          "Microsoft.Devices/iotHubs/certificates/Read",
+          "Microsoft.Devices/iotHubs/certificates/Write",
+          "Microsoft.Devices/iotHubs/certificates/Delete",
+          "Microsoft.Devices/iotHubs/certificates/generateVerificationCode/Action",
+          "Microsoft.Devices/iotHubs/certificates/verify/Action",
+          "Microsoft.Devices/iotHubs/iotHubKeys/listkeys/Action"
         ],
         "metadata": {
           "description": "Array of actions for the roleDefinition"
@@ -20,14 +26,14 @@
       },
       "roleName": {
         "type": "string",
-        "defaultValue": "Cloud Connector RBAC - ARMT",
+        "defaultValue": "Cloud Connector RBAC Role",
         "metadata": {
           "description": "Friendly name of the role definition"
         }
       },
       "roleDescription": {
         "type": "string",
-        "defaultValue": "Subscription Level Deployment of a Role Definition",
+        "defaultValue": "RBAC role with required permissions for Cloud Connector.",
         "metadata": {
           "description": "Detailed description of the role definition"
         }
