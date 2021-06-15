@@ -1,0 +1,109 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "scope": {
+            "type": "string",
+            "defaultValue": "[subscription().id]",
+            "metadata": {
+                "description": "Role assignable scope with default value of id for current active subscription"
+            }
+        },
+        "roleDefinitionID": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the role definition ID used in the role assignment."
+            }
+        },
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifies the principal ID assigned to the role."
+            }
+        },
+        "scopes": {
+            "type": "array",
+            "defaultValue": [
+            "[subscription().id]"
+            ],
+            "metadata": {
+            "description": "Role assignable scope with default value of id for current active subscription"
+            }
+        },
+        "actions": {
+            "type": "array",
+            "defaultValue": [
+                "Microsoft.Devices/iotHubs/Read",
+                "Microsoft.Devices/iotHubs/certificates/Read",
+                "Microsoft.Devices/iotHubs/certificates/Write",
+                "Microsoft.Devices/iotHubs/certificates/Delete",
+                "Microsoft.Devices/iotHubs/certificates/generateVerificationCode/Action",
+                "Microsoft.Devices/iotHubs/certificates/verify/Action",
+                "Microsoft.Devices/iotHubs/iotHubKeys/listkeys/Action"
+            ],
+            "metadata": {
+            "description": "Array of actions for the roleDefinition"
+            }
+        },
+        "notActions": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+            "description": "Array of notActions for the roleDefinition"
+            }
+        },
+        "roleName": {
+            "type": "string",
+            "defaultValue": "Cloud Connector RBAC Role",
+            "metadata": {
+            "description": "Friendly name of the role definition"
+            }
+        },
+        "roleDescription": {
+            "type": "string",
+            "defaultValue": "RBAC role with required permissions for Cloud Connector.",
+            "metadata": {
+            "description": "Detailed description of the role definition"
+            }
+        }
+    },
+    "variables": {
+        "roleAssignmentName": "[guid(parameters('principalId'), parameters('scope'), parameters('roleDefinitionID'))]",
+        "roleDefName": "[guid(subscription().id, string(parameters('scopes')), string(parameters('actions')), string(parameters('notActions')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "apiVersion": "2018-07-01",
+            "name": "[variables('roleDefName')]",
+            "properties": {
+                "roleName": "[parameters('roleName')]",
+                "description": "[parameters('roleDescription')]",
+                "type": "customRole",
+                "isCustom": true,
+                "permissions": [
+                    {
+                    "actions": "[parameters('actions')]",
+                    "notActions": "[parameters('notActions')]"
+                    }
+                ],
+                "assignableScopes": "[parameters('scopes')]"
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "scope": "[parameters('scope')]",
+            "name": "[variables('roleAssignmentName')]",
+            "dependsOn": [
+                "[variables('roleDefName')]"
+            ],
+            "properties": {
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
+                "principalId": "[parameters('principalId')]",
+                "principalType": "ServicePrincipal",
+                "scoep": "[parameters('scope')]"
+            }
+        }
+    ]
+  }
