@@ -79,7 +79,7 @@
             "outputs": {
                 "resourceID": {
                     "type": "string",
-                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('roleName'))]"
+                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleName'))]"
                 }
             }
         },
@@ -92,7 +92,7 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('roleName'))]",
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleName'))]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
