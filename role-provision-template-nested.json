@@ -92,7 +92,7 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[reference(variables('roleDefName')).outputs.resourceID.value]",
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('roleName'))]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
