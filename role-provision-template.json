@@ -5,7 +5,7 @@
       "scopes": {
         "type": "array",
         "defaultValue": [
-          "subscription().id"
+          "/subscriptions/b64719a6-a489-41aa-9bf9-bf91b3ff1750/resourceGroups/gator-iota-hub-rg/providers/Microsoft.Devices/IotHubs/gator-iota-hub"
         ],
         "metadata": {
           "description": "Role assignable scope with default value of id for current active subscription"
