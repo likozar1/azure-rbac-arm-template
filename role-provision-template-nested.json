@@ -92,7 +92,7 @@
             "outputs": {
                 "resourceID": {
                     "type": "string",
-                    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('roleName'))]"
+                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleName'))]"
                 }
             }
         },
@@ -105,7 +105,7 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', [reference('linkedTemplate').outputs.resourceID.value])]",
+                "roleDefinitionId": "[reference('linkedTemplate').outputs.resourceID.value]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
