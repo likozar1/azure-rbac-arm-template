@@ -2,6 +2,15 @@
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+      "scopes": {
+        "type": "array",
+        "defaultValue": [
+          "[subscription().id]"
+        ],
+        "metadata": {
+          "description": "Role assignable scope with default value of id for current active subscription"
+        }
+      },
       "actions": {
         "type": "array",
         "defaultValue": [
@@ -40,7 +49,7 @@
       }
     },
     "variables": {
-      "roleDefName": "[guid(subscription().id, string(parameters('actions')), string(parameters('notActions')))]"
+      "roleDefName": "[guid(subscription().id, string(parameters('scopes')), string(parameters('actions')), string(parameters('notActions')))]"
     },
     "resources": [
       {
@@ -59,7 +68,7 @@
             }
           ],
           "assignableScopes": [
-            "[subscription().id]"
+            "[parameters('scopes')]"
           ]
         }
       }
