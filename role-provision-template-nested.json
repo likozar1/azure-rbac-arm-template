@@ -15,15 +15,6 @@
                 "description": "Specifies the principal ID assigned to the role."
             }
         },
-        "scopes": {
-            "type": "array",
-            "defaultValue": [
-            "[subscription().id]"
-            ],
-            "metadata": {
-            "description": "Role assignable scope with default value of id for current active subscription"
-            }
-        },
         "actions": {
             "type": "array",
             "defaultValue": [
@@ -63,7 +54,7 @@
     },
     "variables": {
         "roleAssignmentName": "[guid(parameters('principalId'), parameters('scope'))]",
-        "roleDefName": "[guid(subscription().id, string(parameters('scopes')), string(parameters('actions')), string(parameters('notActions')))]"
+        "roleDefName": "[guid(subscription().id, parameters('scope'), string(parameters('actions')), string(parameters('notActions')))]"
     },
     "resources": [
         {
@@ -81,7 +72,9 @@
                     "notActions": "[parameters('notActions')]"
                     }
                 ],
-                "assignableScopes": "[parameters('scopes')]"
+                "assignableScopes": [
+                    "[parameters('scope')]"
+                ]
             },
             "outputs": {
                 "resourceID": {
