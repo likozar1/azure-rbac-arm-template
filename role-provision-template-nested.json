@@ -9,12 +9,6 @@
                 "description": "Role assignable scope with default value of id for current active subscription"
             }
         },
-        "roleDefinitionID": {
-            "type": "string",
-            "metadata": {
-                "description": "Specifies the role definition ID used in the role assignment."
-            }
-        },
         "principalId": {
             "type": "string",
             "metadata": {
@@ -68,7 +62,7 @@
         }
     },
     "variables": {
-        "roleAssignmentName": "[guid(parameters('principalId'), parameters('scope'), parameters('roleDefinitionID'))]",
+        "roleAssignmentName": "[guid(parameters('principalId'), parameters('scope'))]",
         "roleDefName": "[guid(subscription().id, string(parameters('scopes')), string(parameters('actions')), string(parameters('notActions')))]"
     },
     "resources": [
