@@ -68,6 +68,12 @@
             }
           ],
           "assignableScopes": "[parameters('scopes')]"
+        }, 
+        "outputs": {
+          "resourceID": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('roleName').id)]"
+          }
         }
       }
     ]
