@@ -75,12 +75,6 @@
                 "assignableScopes": [
                     "[parameters('scope')]"
                 ]
-            },
-            "outputs": {
-                "resourceID": {
-                    "type": "string",
-                    "value": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('roleName').id)]"
-                }
             }
         },
         {
@@ -92,11 +86,17 @@
                 "[variables('roleDefName')]"
             ],
             "properties": {
-                "roleDefinitionId": "[reference(variables('roleDefName')).outputs.resourceID.value]",
+                "roleDefinitionId": "[concat(subscription().id, '/providers/', reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId)]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
             }
         }
-    ]
+    ],
+    "outputs": {
+        "resourceID": {
+          "type": "string",
+          "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
+        }
+      }
 }
