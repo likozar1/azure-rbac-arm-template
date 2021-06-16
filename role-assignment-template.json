@@ -32,7 +32,7 @@
             "scope": "[parameters('scope')]",
             "name": "[variables('roleAssignmentName')]",
             "properties": {
-                "roleDefinitionId": "[concat('/subscriptions/', subscription().id, '/providers/', parameters('roleDefinitionId'))]",
+                "roleDefinitionId": "[concat(subscription().id, '/providers/', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]"
