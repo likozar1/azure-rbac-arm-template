@@ -73,14 +73,14 @@
                     }
                 ],
                 "assignableScopes": [
-                    "[parameters('scope')]"
+                    "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
                 ]
             }
         },
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "scope": "[parameters('scope')]",
+            "scope": "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]",
             "name": "[variables('roleAssignmentName')]",
             "dependsOn": [
                 "[variables('roleDefName')]"
@@ -89,7 +89,7 @@
                 "roleDefinitionId": "[concat(subscription().id, '/providers/', reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId)]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
-                "scoep": "[parameters('scope')]"
+                "scope": "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
             }
         }
     ],
