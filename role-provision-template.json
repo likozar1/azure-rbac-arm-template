@@ -76,9 +76,13 @@
           "type": "string",
           "value": "test"
       },
-      "hostname": {
-        "type": "string",
+      "referenceOutput": {
+        "type": "object",
         "value": "[reference(parameters('roleName'))]"
+      },
+      "hostname": {
+        "type": "object",
+        "value": "[reference(parameters('roleName'), '2016-12-01', 'Full')]"
       }
     }
   }
