@@ -73,14 +73,14 @@
                     }
                 ],
                 "assignableScopes": [
-                    "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
+                    "[concat(resourceGroup().id, '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
                 ]
             }
         },
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "scope": "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]",
+            "scope": "[concat(resourceGroup().id, '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]",
             "name": "[variables('roleAssignmentName')]",
             "dependsOn": [
                 "[variables('roleDefName')]"
