@@ -82,7 +82,7 @@
       },
       "hostname": {
         "type": "object",
-        "value": "[reference(variables('roleDefName'), '2016-12-01', 'Full')]"
+        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full')]"
       }
     }
   }
