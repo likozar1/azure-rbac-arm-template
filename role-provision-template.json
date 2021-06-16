@@ -76,13 +76,13 @@
           "type": "string",
           "value": "test"
       },
-      "referenceOutput": {
+      "hostname2": {
         "type": "object",
-        "value": "[reference(variables('roleDefName'))]"
+        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
       },
       "hostname": {
         "type": "object",
-        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full')]"
+        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
       }
     }
   }
