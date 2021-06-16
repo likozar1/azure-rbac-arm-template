@@ -89,7 +89,7 @@
                 "roleDefinitionId": "[concat(subscription().id, '/providers/', reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId)]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
-                "scope": "[concat(resourceGroup().id], '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
+                "scope": "[concat(resourceGroup().id, '/providers/Microsoft.Devices/IotHubs/', [parameters('scope'))]"
             }
         }
     ],
