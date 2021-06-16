@@ -7,7 +7,8 @@
 ```bash
 [string[]]$scopes = Read-Host -Prompt "Enter scopes as a comma-separated list (i.e. scope1,scope2)"
 $scopes = $scopes.Split(',')
-$resourceGroupName = "gator-iota-hub-rg"
+$hub = Read-Host -Prompt "Enter IoT Hub scope name (i.e. IoT hub name)"
+$resourceGroupName = az iot hub show --name $hub --query "resourcegroup" --output tsv
 $templateUri = "https://raw.githubusercontent.com/likozar1/azure-rbac-arm-template/main/role-provision-template.json"
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -scopes $scopes
 ```
@@ -15,10 +16,10 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ### Execute RoleAssignent template:
 
 ```bash
-$scope = Read-Host -Prompt "Enter assignment scope (i.e. iot hub ID)"
-$resourceGroupName = "gator-iota-hub-rg"
+$hub = Read-Host -Prompt "Enter IoT Hub scope name (i.e. IoT hub name)"
+$resourceGroupName = az iot hub show --name $hub --query "resourcegroup" --output tsv
 $templateUri = "https://raw.githubusercontent.com/likozar1/azure-rbac-arm-template/main/role-assignment-template.json"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -scope $scope
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -scope $hub
 ```
 
 ### Execute Nested Role and Assignment template:
