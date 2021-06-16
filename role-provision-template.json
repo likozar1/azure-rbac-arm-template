@@ -78,11 +78,11 @@
       },
       "referenceOutput": {
         "type": "object",
-        "value": "[reference(parameters('roleName'))]"
+        "value": "[reference(variables('roleDefName'))]"
       },
       "hostname": {
         "type": "object",
-        "value": "[reference(parameters('roleName'), '2016-12-01', 'Full')]"
+        "value": "[reference(variables('roleDefName'), '2016-12-01', 'Full')]"
       }
     }
   }
