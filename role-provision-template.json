@@ -73,15 +73,7 @@
     ],
     "outputs": {
       "resourceID": {
-          "type": "string",
-          "value": "test"
-      },
-      "hostname2": {
-        "type": "object",
-        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
-      },
-      "hostname": {
-        "type": "object",
+        "type": "string",
         "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
       }
     }
