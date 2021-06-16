@@ -72,10 +72,6 @@
       }
     ],
     "outputs": {
-      "ID": {
-        "type": "string",
-        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').Id]"
-      },
       "resourceID": {
         "type": "string",
         "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
