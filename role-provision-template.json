@@ -77,8 +77,8 @@
         "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
       },
       "resourceID2": {
-        "type": "object",
-        "value": "[reference(resourceId('Microsoft.Authorization/roleDefinitions', variables('roleDefName')), '2018-07-01')]"
+        "type": "string",
+        "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full')]"
       }
     }
   }

@@ -32,7 +32,7 @@
             "scope": "[parameters('scope')]",
             "name": "[variables('roleAssignmentName')]",
             "properties": {
-                "roleDefinitionId": "[parameters('roleDefinitionId')]",
+                "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[parameters('principalId')]",
                 "principalType": "ServicePrincipal",
                 "scoep": "[parameters('scope')]",
