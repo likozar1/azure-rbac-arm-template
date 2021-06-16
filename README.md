@@ -22,7 +22,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ```
 
 
-$scope = Read-Host -Prompt "Enter assignment scope (i.e. iot hub ID)"
-$resourceGroupName = "gator-iota-hub-rg"
+$hub = Read-Host -Prompt "Enter IoT Hub scope (i.e. IoT hub ID)"
+$principalId = Read-Host -Prompt "Enter Principal scope (i.e. principal GUID)"
+$resourceGroupName = az iot hub show --name $hub --query "resourcegroup" --output tsv
+$scope = az iot hub show --name $hub --query "id" --output tsv
 $templateUri = "https://raw.githubusercontent.com/likozar1/azure-rbac-arm-template/main/role-provision-template-nested.json"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -scope $scope
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -scope $scope -principalId $principalId

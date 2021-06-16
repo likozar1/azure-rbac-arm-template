@@ -99,7 +99,7 @@
           "value": "[reference(variables('roleDefName'), '2018-07-01', 'Full').resourceId]"
         },
         "resourceID2": {
-            "type": "object",
+            "type": "string",
             "value": "[resourceGroup().id]"
         }
     }
