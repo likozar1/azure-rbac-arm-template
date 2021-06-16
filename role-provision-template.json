@@ -82,7 +82,7 @@
       },
       "resourceID2": {
         "type": "object",
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('roleDefName')), '2018-07-01')]"
+        "value": "[reference(resourceId('Microsoft.Authorization/roleDefinitions', variables('roleDefName')), '2018-07-01')]"
       }
     }
   }
